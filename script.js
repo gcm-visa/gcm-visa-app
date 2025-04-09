@@ -1,43 +1,43 @@
-let deferredPrompt; // To hold the event for the install prompt
+let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
 const pwaModal = document.getElementById('pwaModal');
 const closePwaModal = document.getElementById('closePwaModal');
 
-// Handle the 'beforeinstallprompt' event
+// PWA prompt
 window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); // Prevent the default prompt from showing
-  deferredPrompt = e; // Store the event for later use
-  pwaModal.style.display = "block"; // Show the modal
+  e.preventDefault();
+  deferredPrompt = e;
+  pwaModal.style.display = "block";
 });
 
-// Install PWA when user clicks the button
-installBtn.addEventListener('click', () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      console.log(choiceResult.outcome);
-      deferredPrompt = null;
-    });
-    pwaModal.style.display = "none";
-  }
-});
+if (installBtn) {
+  installBtn.addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        console.log(choiceResult.outcome);
+        deferredPrompt = null;
+      });
+      pwaModal.style.display = "none";
+    }
+  });
+}
 
-// Close modal handlers
-closePwaModal.onclick = function() {
-  pwaModal.style.display = "none";
-};
+if (closePwaModal) {
+  closePwaModal.onclick = () => pwaModal.style.display = "none";
+}
 
 window.onclick = function(event) {
-  if (event.target === pwaModal) {
+  if (event.target == pwaModal) {
     pwaModal.style.display = "none";
   }
 };
 
-// Register service worker
+// Service Worker
 if ('serviceWorker' in navigator) {
-  window.addEventListener('DOMContentLoaded', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('SW registered:', reg.scope))
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/gcm-visa-app/service-worker.js')
+      .then(reg => console.log('ServiceWorker registered:', reg.scope))
       .catch(err => console.error('SW registration failed:', err));
   });
 }
