@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Visa</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #e6f5d0, #a5d6a7);
+        min-height: 100vh;
+        color: #1b5e20;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        flex-direction: column;
+      }
+
+      .container {
+        background-color: #ffffffcc;
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 30px 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        border: 1px solid #c8e6c9;
+      }
+
+      .header {
+        background-color: #ffffff;
+        color: green;
+        padding: 12px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 8px;
+        margin: 20px 0 16px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      img {
+        margin-bottom: 10px;
+      }
+
+      .button {
+        background-color: #66bb6a;
+        color: white;
+        padding: 14px;
+        margin: 10px 0;
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .button:hover {
+        background-color: #388e3c;
+        transform: scale(1.02);
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); /* Black with transparency */
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+      }
+
+      .modal-header {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .modal-footer {
+        margin-top: 20px;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="https://www.dropbox.com/scl/fi/plnevepzhsf9etdoxnlzs/logo-for-MARS.png?rlkey=03l9s706cr83aml02v64kgv38&dl=1" height="80" alt="Logo" />
+
+      <div class="header">DEPARTMENT OF VISA</div>
+
+<a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbz6gLkMZXlWlpdE7mlFHuUWqwu6WKsqW841AERMaqeLic7KVbKBlSnWslGCbdBfVsBDGw/exec" class="button" target="_blank">VISA Application Tracking</a>
+
+<a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbze4jfgxz64weC9U-RrftgK0-WGKiG-otqkydKWmaOD69PZlWNtay2s9dIxDK8VvvJs/exec" class="button" target="_blank">VISA Approved/Disapproved</a>
+
+<a href="https://docs.google.com/forms/d/1l71FS4tYen6qwJJFpzkl3y7nXfe2K2W_ztaSEO3sBIY/" class="button" target="_blank">Passport / ACR Submission Form</a>
+
+<a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbwZnw8Gx9BqVVArOe8tFRP1xUQbp6rEf2G5IDzeLO5clj8lXFb06Yp2vropwP4zP5Bg/exec?page=Request" class="button" target="_blank">Passport / ACR Request Form</a>
+
+<a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbzIL0y_eiIVQCkshwZmo8wtHo9Z9jT_8hZxVibKgwO4SrZ0BB0Bft1O8ncAkG1nNXKJ/exec" class="button" target="_blank">CEAM Status</a>
+
+      <!-- Credit -->
+      <p style="margin-top: 20px; font-size: 14px; color: rgba(211, 211, 211, 0.8);">Developed by: Elvinson</p>
+    </div>
+
+    <!-- Modal for PWA Installation -->
+    <div id="pwaModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closePwaModal">&times;</span>
+        <div class="modal-header">
+          <h2>Install GCM VISA App</h2>
+        </div>
+        <div class="modal-body">
+          <p>Would you like to install the GCM VISA App to your device? It's a Progressive Web App (PWA)!</p>
+          <button id="installBtn" class="button">Install PWA</button>
+        </div>
+        <div class="modal-footer">
+          <p>Thank you for using our services!</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let deferredPrompt;
+      const installBtn = document.getElementById('installBtn');
+      const pwaModal = document.getElementById('pwaModal');
+      const closePwaModal = document.getElementById('closePwaModal');
+
+      // Detect if the browser supports PWA installation
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault(); // Prevent the default installation prompt
+        deferredPrompt = e;
+        // Show modal with install option
+        pwaModal.style.display = "block";
+      });
+
+      // Close the modal when the close button is clicked
+      closePwaModal.onclick = function() {
+        pwaModal.style.display = "none";
+      };
+
+      // Handle the install button click
+      installBtn.addEventListener('click', (e) => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt(); // Show the native install prompt
+          deferredPrompt.userChoice.then((choiceResult) => {
+            console.log(choiceResult.outcome);
+            deferredPrompt = null; // Reset the deferredPrompt
+          });
+          pwaModal.style.display = "none";
+        }
+      });
+
+      // Close the modal if the user clicks outside the modal content
+      window.onclick = function(event) {
+        if (event.target == pwaModal) {
+          pwaModal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
