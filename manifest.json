@@ -5,7 +5,7 @@
   "start_url": "/gcm-visa-app/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#579af2",
+  "theme_color": "#1b5e20",
   "icons": [
     {
       "src": "/gcm-visa-app/icon-192x192.png",
