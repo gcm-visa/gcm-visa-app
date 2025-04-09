@@ -4,8 +4,8 @@
   "description": "GCM VISA App for application and tracking.",
   "start_url": "/gcm-visa-app/",
   "display": "standalone",
-  "background_color": "#66bb6a",
-  "theme_color": "#66bb6a",
+  "background_color": "#0a520d",
+  "theme_color": "#579af2",
   "icons": [
     {
       "src": "/gcm-visa-app/icon-192x192.png",
