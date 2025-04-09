@@ -2,18 +2,18 @@
   "name": "GCM VISA Application",
   "short_name": "GCM VISA",
   "description": "GCM VISA App for application and tracking.",
-  "start_url": "/",
+  "start_url": "/gcm-visa-app/",
   "display": "standalone",
   "background_color": "#66bb6a",
   "theme_color": "#66bb6a",
   "icons": [
     {
-      "src": "icon-192x192.png",
+      "src": "/gcm-visa-app/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512x512.png",
+      "src": "/gcm-visa-app/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
