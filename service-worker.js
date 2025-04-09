@@ -4,8 +4,8 @@ const URLs_TO_CACHE = [
   '/index.html',
   '/styles.css',
   '/script.js',
-  '/images/icon-192x192.png',
-  '/images/icon-512x512.png',
+  '/icon-192x192.png',
+  '/icon-512x512.png',
 ];
 
 // Install Service Worker and Cache Files
