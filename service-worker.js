@@ -6,7 +6,6 @@ const URLs_TO_CACHE = [
   '/script.js',
   '/images/icon-192x192.png',
   '/images/icon-512x512.png',
-  '/offline.html', // Add offline page for fallback
 ];
 
 // Install Service Worker and Cache Files
@@ -25,11 +24,7 @@ self.addEventListener('fetch', (event) => {
       if (cachedResponse) {
         return cachedResponse; // Return cached response
       }
-
-      return fetch(event.request).catch(() => {
-        // If network fails and the requested page is not cached
-        return caches.match('/offline.html'); // Show offline page
-      });
+      return fetch(event.request); // Fallback to network if not in cache
     })
   );
 });
