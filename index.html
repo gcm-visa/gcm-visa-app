@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GCM VISA Application</title>
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json" />
   <script src="script.js"></script>
   <style>
-    /* Your CSS styles go here */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -40,7 +39,7 @@
 
     .header {
       background-color: #ffffff;
-      color: green;
+      color: #2e7d32; /* Dark green */
       padding: 12px;
       font-size: 20px;
       font-weight: bold;
@@ -54,7 +53,7 @@
     }
 
     .button {
-      background-color: #66bb6a;
+      background-color: #2e7d32; /* Darker green */
       color: white;
       padding: 14px;
       margin: 10px 0;
@@ -69,20 +68,19 @@
     }
 
     .button:hover {
-      background-color: #388e3c;
+      background-color: #1b5e20; /* Even darker on hover */
       transform: scale(1.02);
     }
 
-    /* Modal styles */
     .modal {
-      display: none; /* Hidden by default */
+      display: none;
       position: fixed;
-      z-index: 1; /* Sit on top */
+      z-index: 1;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.4); /* Black with transparency */
+      background-color: rgba(0, 0, 0, 0.4);
       justify-content: center;
       align-items: center;
     }
@@ -99,6 +97,7 @@
     .modal-header {
       font-size: 20px;
       margin-bottom: 20px;
+      color: #2e7d32;
     }
 
     .modal-footer {
@@ -124,12 +123,13 @@
   <div class="container">
     <img src="https://www.dropbox.com/scl/fi/plnevepzhsf9etdoxnlzs/logo-for-MARS.png?rlkey=03l9s706cr83aml02v64kgv38&dl=1" height="60" alt="Logo" />
     <div class="header">DEPARTMENT OF VISA</div>
-    <!-- Links or Buttons for Visa Applications -->
+
     <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbz6gLkMZXlWlpdE7mlFHuUWqwu6WKsqW841AERMaqeLic7KVbKBlSnWslGCbdBfVsBDGw/exec" class="button" target="_blank">VISA Application Tracking</a>
     <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbze4jfgxz64weC9U-RrftgK0-WGKiG-otqkydKWmaOD69PZlWNtay2s9dIxDK8VvvJs/exec" class="button" target="_blank">VISA Approved/Disapproved</a>
     <a href="https://docs.google.com/forms/d/1l71FS4tYen6qwJJFpzkl3y7nXfe2K2W_ztaSEO3sBIY/" class="button" target="_blank">Passport / ACR Submission Form</a>
     <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbwZnw8Gx9BqVVArOe8tFRP1xUQbp6rEf2G5IDzeLO5clj8lXFb06Yp2vropwP4zP5Bg/exec?page=Request" class="button" target="_blank">Passport / ACR Request Form</a>
     <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbzIL0y_eiIVQCkshwZmo8wtHo9Z9jT_8hZxVibKgwO4SrZ0BB0Bft1O8ncAkG1nNXKJ/exec" class="button" target="_blank">CEAM Status</a>
+
     <p style="margin-top: 20px; font-size: 14px; color: rgba(211, 211, 211, 0.8);">Developed by: Elvinson</p>
   </div>
 
@@ -149,6 +149,5 @@
       </div>
     </div>
   </div>
-
 </body>
 </html>
