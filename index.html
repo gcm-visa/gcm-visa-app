@@ -19,14 +19,16 @@
 
    body {
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
     color: #1b5e20;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    height: 100vh; /* Full viewport height */
   }
 
   .video-background {
@@ -35,12 +37,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    z-index: -1; /* Ensure the video stays behind the content */
+    object-fit: cover; /* Ensures the video covers the entire screen */
+    z-index: -1; /* Keeps the video behind the content */
   }
-  
+
   .container {
-    background-color: rgba(255, 255, 255, 0.7); /* Optional: makes content more readable */
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white for readability */
     border-radius: 16px;
     padding: 30px 20px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -131,9 +133,8 @@
   </style>
 </head>
 <body>
-   <video class="video-background" autoplay loop muted>
-    <source src="visaappbackground.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+    <video class="video-background" autoplay loop muted id="background-video">
+    <source src="path_to_your_video.mp4" type="video/mp4">
   </video>
   <div class="container">
     <img src="https://www.dropbox.com/scl/fi/plnevepzhsf9etdoxnlzs/logo-for-MARS.png?rlkey=03l9s706cr83aml02v64kgv38&dl=1" height="60" alt="Logo" />
@@ -158,7 +159,13 @@
     <p style="margin-top: 20px; font-size: 14px; color: rgba(169, 169, 169, 0.8);">Developed by: Elvinson</p>
 
   </div>
-
+  
+ <script>
+    // Slow down the video playback to 0.2x (very slow motion)
+    const video = document.getElementById('background-video');
+    video.playbackRate = 0.2; // Adjust this value to make the video slower or faster
+  </script>
+  
   <!-- Modal for PWA Installation -->
   <div id="pwaModal" class="modal">
     <div class="modal-content">
