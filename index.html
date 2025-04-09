@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Department of Visa</title>
-    
-    <!-- Link to the manifest file -->
     <link rel="manifest" href="manifest.json">
-
+    <script>
+      // Check for service worker support and register it if available
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        }).catch(function(error) {
+          console.log('Service Worker registration failed:', error);
+        });
+      }
+    </script>
     <style>
       * {
         box-sizing: border-box;
@@ -124,7 +131,6 @@
   <body>
     <div class="container">
       <img src="https://www.dropbox.com/scl/fi/plnevepzhsf9etdoxnlzs/logo-for-MARS.png?rlkey=03l9s706cr83aml02v64kgv38&dl=1" height="80" alt="Logo" />
-
       <div class="header">DEPARTMENT OF VISA</div>
 
       <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbz6gLkMZXlWlpdE7mlFHuUWqwu6WKsqW841AERMaqeLic7KVbKBlSnWslGCbdBfVsBDGw/exec" class="button" target="_blank">VISA Application Tracking</a>
@@ -164,30 +170,37 @@
       const pwaModal = document.getElementById('pwaModal');
       const closePwaModal = document.getElementById('closePwaModal');
 
-      // Detect if the browser supports PWA installation
+      // Listen for the 'beforeinstallprompt' event
       window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault(); // Prevent the default installation prompt
-        deferredPrompt = e;
-        // Show modal with install option
-        pwaModal.style.display = "block";
+        // Prevent the default prompt
+        e.preventDefault();
+        deferredPrompt = e;  // Store the event
+        pwaModal.style.display = "block";  // Show your custom modal
       });
 
-      // Close the modal when the close button is clicked
+      // When the user clicks on the "Install" button, show the native prompt
+      installBtn.addEventListener('click', (e) => {
+        if (deferredPrompt) {
+          // Show the native install prompt
+          deferredPrompt.prompt();
+          
+          // Wait for the user's response to the prompt
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the A2HS prompt');
+            } else {
+              console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;  // Reset the prompt
+            pwaModal.style.display = "none";  // Close the modal
+          });
+        }
+      });
+
+      // Close the modal when the user clicks the close button
       closePwaModal.onclick = function() {
         pwaModal.style.display = "none";
       };
-
-      // Handle the install button click
-      installBtn.addEventListener('click', (e) => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt(); // Show the native install prompt
-          deferredPrompt.userChoice.then((choiceResult) => {
-            console.log(choiceResult.outcome);
-            deferredPrompt = null; // Reset the deferredPrompt
-          });
-          pwaModal.style.display = "none";
-        }
-      });
 
       // Close the modal if the user clicks outside the modal content
       window.onclick = function(event) {
