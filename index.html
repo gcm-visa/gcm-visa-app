@@ -6,6 +6,9 @@
   <title>GCM VISA Application</title>
   <link rel="manifest" href="manifest.json" />
   <script src="script.js"></script>
+  <!-- Font Awesome CDN for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-KsE+MFeFv5dEaaHhvqHtnqMVEc7H7IqRkm8cbiAZBbOpN7vO7rF8E1FQn+jgGljY2WTLF1kxu6dUgAyVGzvKSg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
   <style>
     * {
       box-sizing: border-box;
@@ -39,7 +42,7 @@
 
     .header {
       background-color: #ffffff;
-      color: #2e7d32; /* Dark green */
+      color: #2e7d32;
       padding: 12px;
       font-size: 20px;
       font-weight: bold;
@@ -53,7 +56,7 @@
     }
 
     .button {
-      background-color: #2e7d32; /* Darker green */
+      background-color: #2e7d32;
       color: white;
       padding: 14px;
       margin: 10px 0;
@@ -63,12 +66,19 @@
       font-size: 16px;
       font-weight: bold;
       text-decoration: none;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
+    .button i {
+      font-size: 18px;
+    }
+
     .button:hover {
-      background-color: #1b5e20; /* Even darker on hover */
+      background-color: #1b5e20;
       transform: scale(1.02);
     }
 
@@ -124,11 +134,22 @@
     <img src="https://www.dropbox.com/scl/fi/plnevepzhsf9etdoxnlzs/logo-for-MARS.png?rlkey=03l9s706cr83aml02v64kgv38&dl=1" height="60" alt="Logo" />
     <div class="header">DEPARTMENT OF VISA</div>
 
-    <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbz6gLkMZXlWlpdE7mlFHuUWqwu6WKsqW841AERMaqeLic7KVbKBlSnWslGCbdBfVsBDGw/exec" class="button" target="_blank">VISA Application Tracking</a>
-    <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbze4jfgxz64weC9U-RrftgK0-WGKiG-otqkydKWmaOD69PZlWNtay2s9dIxDK8VvvJs/exec" class="button" target="_blank">VISA Approved/Disapproved</a>
-    <a href="https://docs.google.com/forms/d/1l71FS4tYen6qwJJFpzkl3y7nXfe2K2W_ztaSEO3sBIY/" class="button" target="_blank">Passport / ACR Submission Form</a>
-    <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbwZnw8Gx9BqVVArOe8tFRP1xUQbp6rEf2G5IDzeLO5clj8lXFb06Yp2vropwP4zP5Bg/exec?page=Request" class="button" target="_blank">Passport / ACR Request Form</a>
-    <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbzIL0y_eiIVQCkshwZmo8wtHo9Z9jT_8hZxVibKgwO4SrZ0BB0Bft1O8ncAkG1nNXKJ/exec" class="button" target="_blank">CEAM Status</a>
+    <!-- Buttons with Icons -->
+    <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbz6gLkMZXlWlpdE7mlFHuUWqwu6WKsqW841AERMaqeLic7KVbKBlSnWslGCbdBfVsBDGw/exec" class="button" target="_blank">
+      <i class="fas fa-magnifying-glass-chart"></i> VISA Application Tracking
+    </a>
+    <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbze4jfgxz64weC9U-RrftgK0-WGKiG-otqkydKWmaOD69PZlWNtay2s9dIxDK8VvvJs/exec" class="button" target="_blank">
+      <i class="fas fa-thumbs-up"></i> VISA Approved/Disapproved
+    </a>
+    <a href="https://docs.google.com/forms/d/1l71FS4tYen6qwJJFpzkl3y7nXfe2K2W_ztaSEO3sBIY/" class="button" target="_blank">
+      <i class="fas fa-file-upload"></i> Passport / ACR Submission Form
+    </a>
+    <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbwZnw8Gx9BqVVArOe8tFRP1xUQbp6rEf2G5IDzeLO5clj8lXFb06Yp2vropwP4zP5Bg/exec?page=Request" class="button" target="_blank">
+      <i class="fas fa-passport"></i> Passport / ACR Request Form
+    </a>
+    <a href="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbzIL0y_eiIVQCkshwZmo8wtHo9Z9jT_8hZxVibKgwO4SrZ0BB0Bft1O8ncAkG1nNXKJ/exec" class="button" target="_blank">
+      <i class="fas fa-info-circle"></i> CEAM Status
+    </a>
 
     <p style="margin-top: 20px; font-size: 14px; color: rgba(211, 211, 211, 0.8);">Developed by: Elvinson</p>
   </div>
@@ -142,7 +163,7 @@
       </div>
       <div class="modal-body">
         <p>Would you like to install the GCM VISA App to your device? It's a Progressive Web App (PWA)!</p>
-        <button id="installBtn" class="button">Install PWA</button>
+        <button id="installBtn" class="button"><i class="fas fa-download"></i> Install PWA</button>
       </div>
       <div class="modal-footer">
         <p>Thank you for using our services!</p>
