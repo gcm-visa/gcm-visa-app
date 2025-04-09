@@ -7,31 +7,37 @@ const closePwaModal = document.getElementById('closePwaModal');
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault(); // Prevent the default prompt from showing
   deferredPrompt = e; // Store the event for later use
-
-  // Show the modal for the user to install the app
-  pwaModal.style.display = "block";
+  pwaModal.style.display = "block"; // Show the modal
 });
 
-// When the user clicks the "Install PWA" button
-installBtn.addEventListener('click', (e) => {
+// Install PWA when user clicks the button
+installBtn.addEventListener('click', () => {
   if (deferredPrompt) {
-    deferredPrompt.prompt(); // Show the native install prompt
+    deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choiceResult) => {
-      console.log(choiceResult.outcome); // Log the user's choice
-      deferredPrompt = null; // Reset the prompt
+      console.log(choiceResult.outcome);
+      deferredPrompt = null;
     });
-    pwaModal.style.display = "none"; // Close the modal
+    pwaModal.style.display = "none";
   }
 });
 
-// Close the modal when the "X" button is clicked
+// Close modal handlers
 closePwaModal.onclick = function() {
   pwaModal.style.display = "none";
 };
 
-// Close the modal if the user clicks outside the modal content
 window.onclick = function(event) {
-  if (event.target == pwaModal) {
+  if (event.target === pwaModal) {
     pwaModal.style.display = "none";
   }
 };
+
+// Register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('DOMContentLoaded', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.error('SW registration failed:', err));
+  });
+}
